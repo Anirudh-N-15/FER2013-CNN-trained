@@ -30,9 +30,8 @@ def predict():
     img = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
     img = prepare_image(img)
     prediction = model.predict(img)
-    emotion = np.argmax(prediction)  # You may have a list of emotions like ['happy', 'sad', ...]
+    emotion = np.argmax(prediction)  
     
-    # Map model output to emotion (example)
     emotions = ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']
     return jsonify({'emotion': emotions[emotion]})
 
